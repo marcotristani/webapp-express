@@ -5,6 +5,9 @@ const port = process.env.PORT;
 //importo routers
 const moviesRouter = require("./routers/moviesRouter");
 
+//attivo cartella public per file statici
+app.use(express.static("public"));
+
 //rotta home dell'API
 app.get("/api", (req, res) => res.send("<h1>Home API</h1>"));
 
