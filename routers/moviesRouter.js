@@ -1,7 +1,10 @@
 const express = require("express");
 const moviesRouter = express.Router();
 
+//importo controllers
+const moviesController = require("./../controllers/moviesController");
+
 //prova rotta index
-moviesRouter.get("/", (req, res) => res.send("prova router"));
+moviesRouter.get("/", moviesController.index);
 
 module.exports = moviesRouter;
