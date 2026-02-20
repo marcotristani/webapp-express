@@ -1,6 +1,7 @@
 //importo db
 const connection = require("./../data/db");
 
+//funzione per rotta index
 function index(req, res) {
   //definisco query sql
   const sql = "SELECT * FROM movies";
@@ -21,4 +22,9 @@ function index(req, res) {
   });
 }
 
-module.exports = { index };
+//funzione per rotta show
+function show(req, res) {
+  const id = req.params.id;
+  res.send("rotta show" + id);
+}
+module.exports = { index, show };
