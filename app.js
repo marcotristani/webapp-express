@@ -5,9 +5,6 @@ const port = process.env.PORT;
 //importo routers
 const moviesRouter = require("./routers/moviesRouter");
 
-//prova connessione db
-const db = require("./data/db");
-
 //rotta home dell'API
 app.get("/api", (req, res) => res.send("<h1>Home API</h1>"));
 
