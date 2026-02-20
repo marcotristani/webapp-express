@@ -1,0 +1,20 @@
+ISTRUZIONI PER RICHIAMARE GLI ENDPOINT DELL'API
+
+ROTTA HOMEPAGE
+ritorna l'homepage dell'API
+endpoint : ' http://localhost:3000/api '
+
+ROTTA INDEX
+Ritorna la lista di tutti i film (senza recensioni)
+endpoint: ' http://localhost:3000/api/movies '
+
+ROTTA SHOW
+Ritorna l'oggetto del film richiesto con anche l'array che contiene tutte le recenzioni relative al film richiesto
+endpoint: ' http://localhost:3000/api/movies/:(id del film richiesto) '
+
+
+ALTRE ISTRUZIONI
+
+VISUALIZZAZIONE IMMAGINE
+Per visualizzare un immagine una volta recuperato il valore image dall'oggetto del film basta richiamare il seguente endpoint
+endpoint: ' http://localhost:3000/api/movies/img/ :(valore image dell'oggetto) '
