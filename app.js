@@ -2,6 +2,9 @@ const express = require("express");
 const app = express();
 const port = process.env.PORT;
 
+//prova connessione db
+const db = require("./data/db");
+
 //rotta home dell'API
 app.get("/api", (req, res) => res.send("<h1>Home API</h1>"));
 
