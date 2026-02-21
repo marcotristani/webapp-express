@@ -30,6 +30,14 @@ function show(req, res) {
   //definisco query per reviews
   const sqlReviews = "SELECT * FROM reviews WHERE movie_id = ?";
 
+  //definisco query per actors
+  const sqlActors = `
+  SELECT actors.name, actors.surname 
+FROM actor_movie
+JOIN actors ON actor_movie.actor_id = actors.id
+JOIN movies ON actor_movie.movie_id = movies.id
+WHERE movies.id = ?`;
+
   //recupero id da parametro query API
   const { id } = req.params;
   //eseguo query al db
@@ -52,8 +60,19 @@ function show(req, res) {
       //se non ci sono errori nella chiamata
       movie.reviews = results;
 
-      //se non ci sono errori ritorna l'oggetto di riposta
-      res.json(movie);
+      //eseguo query per actors relativo al film con l'id ricercato
+      connection.query(sqlActors, [id], (err, results) => {
+        if (err) return res.status(500).json({ error: "database not found" });
+
+        //creo array da andare a salvare nella proprietà actors con nome e cognome attori
+        const actors = results.map((actor) => `${actor.name} ${actor.surname}`);
+
+        //se non ci sono errori nella chiamata
+        movie.actors = actors;
+
+        //se non ci sono errori ritorna l'oggetto di riposta
+        res.json(movie);
+      });
     });
   });
 }
