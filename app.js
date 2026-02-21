@@ -4,6 +4,7 @@ const port = process.env.PORT;
 
 //importo routers
 const moviesRouter = require("./routers/moviesRouter");
+const actorsRouter = require("./routers/actorsRouter");
 
 //importo middleweres per gestione errori
 const errorServer = require("./middleweres/errorServer");
@@ -17,6 +18,7 @@ app.get("/api", (req, res) => res.send("<h1>Home API</h1>"));
 
 //rotte routers
 app.use("/api/movies", moviesRouter);
+app.use("/api/actors", actorsRouter);
 
 //attivo middlewere per errore server
 app.use(errorServer);
