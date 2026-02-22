@@ -10,6 +10,9 @@ const actorsRouter = require("./routers/actorsRouter");
 const errorServer = require("./middleweres/errorServer");
 const notFound = require("./middleweres/notFound");
 
+//attivo middlewere per prendere body in ingresso
+app.use(express.json());
+
 //attivo cartella public per file statici
 app.use(express.static("public"));
 
