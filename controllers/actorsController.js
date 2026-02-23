@@ -39,15 +39,16 @@ WHERE actors.id = ?`;
 //funzione rotta store
 function store(req, res) {
   const sql1 = `
-  INSERT INTO actors (name, surname)
-VALUES (?, ?)`;
+  INSERT INTO actors (name, surname, main_actor)
+VALUES (?, ?, ?)`;
 
   const sql2 = `INSERT INTO actors_details (actor_id, birth_date, death_date, country, award)
 VALUES (LAST_INSERT_ID(), ?, ?, ?, ?);`;
 
-  const { name, surname, birth_date, death_date, country, award } = req.body;
+  const { name, surname, main_actor, birth_date, death_date, country, award } =
+    req.body;
 
-  connection.query(sql1, [name, surname], (err, results) => {
+  connection.query(sql1, [name, surname, main_actor], (err, results) => {
     if (err) return res.status(500).json(err);
 
     const newid = results.insertId;

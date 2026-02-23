@@ -36,7 +36,7 @@ function show(req, res) {
 FROM actor_movie
 JOIN actors ON actor_movie.actor_id = actors.id
 JOIN movies ON actor_movie.movie_id = movies.id
-WHERE movies.id = ?`;
+WHERE movies.id = ? AND actors.main_actor = 1`;
 
   //recupero id da parametro query API
   const { id } = req.params;
@@ -65,10 +65,12 @@ WHERE movies.id = ?`;
         if (err) return res.status(500).json({ error: "database not found" });
 
         //creo array da andare a salvare nella proprietà actors con nome e cognome attori
-        const actors = results.map((actor) => `${actor.name} ${actor.surname}`);
+        const main_actors = results.map(
+          (actor) => `${actor.name} ${actor.surname}`,
+        );
 
         //se non ci sono errori nella chiamata
-        movie.actors = actors;
+        movie.main_actors = main_actors;
 
         //se non ci sono errori ritorna l'oggetto di riposta
         res.json(movie);
