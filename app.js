@@ -15,11 +15,11 @@ const notFound = require("./middleweres/notFound");
 //attivo middlewere per prendere body in ingresso
 app.use(express.json());
 
+//attivo cors con accesso all'indirizzo del mio forntend
+app.use(cors({ origin: "http://localhost:5173" }));
+
 //attivo cartella public per file statici
 app.use(express.static("public"));
-
-//attivo cors con accesso all'indirizzo del mio forntend
-app.use(cors({ origin: "http://localhost:5173/" }));
 
 //rotta home dell'API
 app.get("/api", (req, res) => res.send("<h1>Home API</h1>"));
