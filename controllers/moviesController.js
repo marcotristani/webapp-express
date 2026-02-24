@@ -56,7 +56,7 @@ WHERE movies.id = ? AND actors.main_actor = 1`;
         .json({ error: "not found", message: "film non trovato" });
 
     //costruisco l'oggetto di riposta con dati arrivati dal db
-    const movie = results[0];
+    const movie = { ...results[0], image: req.imagePath + results[0].image };
 
     //eseguo query per reviews relativo al film con l'id ricercato
     connection.query(sqlReviews, [id], (err, results) => {
