@@ -1,6 +1,8 @@
 const express = require("express");
 const app = express();
 const port = process.env.PORT;
+//importo cors per rendere accessibile le chiamate backend dal frontend
+const cors = require("cors");
 
 //importo routers
 const moviesRouter = require("./routers/moviesRouter");
@@ -15,6 +17,9 @@ app.use(express.json());
 
 //attivo cartella public per file statici
 app.use(express.static("public"));
+
+//attivo cors con accesso all'indirizzo del mio forntend
+app.use(cors({ origin: "http://localhost:5173/" }));
 
 //rotta home dell'API
 app.get("/api", (req, res) => res.send("<h1>Home API</h1>"));
