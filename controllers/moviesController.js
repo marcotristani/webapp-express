@@ -11,10 +11,15 @@ function index(req, res) {
     //valuto se ritorna un errore dal db
     if (err) return res.status(500).json({ error: "database not found" });
 
+    // vado ad aggiornare la proprietà immagine con il path giusto
+    const movies = results.map((movie) => {
+      return { ...movie, image: req.imagePath + movie.image };
+    });
+
     //costruisco l'oggetto di riposta con dati arrivati dal db
     const resObj = {
-      n_movies: results.length,
-      movies: results,
+      n_movies: movies.length,
+      movies: movies,
     };
 
     //se non ci sono errori ritorna l'oggetto di riposta
