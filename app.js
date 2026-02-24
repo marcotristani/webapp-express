@@ -12,8 +12,14 @@ const actorsRouter = require("./routers/actorsRouter");
 const errorServer = require("./middleweres/errorServer");
 const notFound = require("./middleweres/notFound");
 
+//importo middlewere globali
+const imagePath = require("./middleweres/imagePath");
+
 //attivo middlewere per prendere body in ingresso
 app.use(express.json());
+
+//attivo middlewere per path image
+app.use(imagePath);
 
 //attivo cors con accesso all'indirizzo del mio forntend
 app.use(cors({ origin: "http://localhost:5173" }));
