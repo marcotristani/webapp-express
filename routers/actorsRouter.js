@@ -11,6 +11,6 @@ actorsRouter.get("/", actorsController.index);
 actorsRouter.get("/:id", actorsController.show);
 
 //rotta store
-actorsRouter.post("/", actorsController.store);
+actorsRouter.post("/add", actorsController.store);
 
 module.exports = actorsRouter;

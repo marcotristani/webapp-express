@@ -7,6 +7,7 @@ const cors = require("cors");
 //importo routers
 const moviesRouter = require("./routers/moviesRouter");
 const actorsRouter = require("./routers/actorsRouter");
+const reviewsRouter = require("./routers/reviewsRouter");
 
 //importo middleweres per gestione errori
 const errorServer = require("./middleweres/errorServer");
@@ -33,6 +34,7 @@ app.get("/api", (req, res) => res.send("<h1>Home API</h1>"));
 //rotte routers
 app.use("/api/movies", moviesRouter);
 app.use("/api/actors", actorsRouter);
+app.use("/api/reviews", reviewsRouter);
 
 //attivo middlewere per errore server
 app.use(errorServer);
